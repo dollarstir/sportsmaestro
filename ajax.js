@@ -59,4 +59,45 @@ $(function(){
 
     })
 
+    $(".logfrm").submit(function(e){
+
+        e.preventDefault();
+
+        var reg1opt = {
+            url: 'dollar.php?action=login',
+            type: 'post',
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: isLoading,
+            success: resp
+
+
+        }
+        $.ajax(reg1opt);
+
+    })
+
+
+    $(".regfrm").submit(function(e){
+
+        e.preventDefault();
+
+        var reg1opt = {
+            url: 'dollar.php?action=register',
+            type: 'post',
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: isLoading,
+            success: resp
+
+
+        }
+        $.ajax(reg1opt);
+
+    })
+
 })

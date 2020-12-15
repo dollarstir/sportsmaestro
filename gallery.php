@@ -85,11 +85,11 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Simple Gallery</h1>
+                        <h1> Gallery</h1>
                         <ul class="ritekhela-breadcrumb">
                             <li><a href="#">Home</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li>Simple Gallery</li>
+                            <!-- <li><a href="#">Blog</a></li> -->
+                            <li> Gallery</li>
                         </ul>
                     </div>
                 </div>
