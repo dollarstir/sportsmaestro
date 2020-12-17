@@ -1,6 +1,7 @@
 <?php
 
-function hbar($pid){
+function hbar($pid)
+{
 
     switch ($pid) {
         case 1:
@@ -406,7 +407,7 @@ function hbar($pid){
             break;
 
         case 4:
-                echo ' <div class="ritekhela-main-header">
+            echo ' <div class="ritekhela-main-header">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -536,8 +537,8 @@ function hbar($pid){
                     </div>
                 </div>
             </div>';
-                break;
-        
+            break;
+
         default:
             # code...
             break;
@@ -547,7 +548,8 @@ function hbar($pid){
 
 
 
-function Apptitles($pid){
+function Apptitles($pid)
+{
 
     switch ($pid) {
         case 1:
@@ -556,18 +558,22 @@ function Apptitles($pid){
             break;
         case 2:
             echo 'Players';
-                # code...
+            # code...
             break;
         case 3:
             echo 'Contact Us';
-                # code...
+            # code...
             break;
 
         case 4:
             echo 'Our Gallery';
-                    # code...
+            # code...
             break;
-        
+        case 5:
+            echo 'User Dashboard';
+                # code...
+            break;
+
         default:
             # code...
             break;
@@ -577,7 +583,8 @@ function Apptitles($pid){
 
 // footer function
 
-function ft(){
+function ft()
+{
     echo ' <footer id="ritekhela-footer" class="ritekhela-footer-one">
 
     <!--// Footer Widget //-->
@@ -638,7 +645,7 @@ function ft(){
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p> &copy; '.date("Y").' Sports Meastro . Designed by<a href="https://www.dollarstir.com" target="_blank">Dollarsoft Corporation</a></p>
+                    <p> &copy; ' . date("Y") . ' Sports Meastro . Designed by<a href="https://www.dollarstir.com" target="_blank">Dollarsoft Corporation</a></p>
                     <a href="#" class="ritekhela-back-top"><i class="fa fa-angle-up"></i></a>
                 </div>
             </div>
@@ -652,7 +659,8 @@ function ft(){
 
 // Login container 
 
-function logbox(){
+function logbox()
+{
     echo ' <div class="loginmodalbox modal fade" id="ritekhelamodalcenter" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">
        <div class="modal-content">
@@ -662,19 +670,19 @@ function logbox(){
                  <i class="fa fa-times"></i>
              </a>
              <form class="loginmodalbox-search logfrm">
-                 <input type="text" value="Enter User Name" onblur="if(this.value == "") { this.value ="Enter User Name"; }" onfocus="if(this.value =="Enter User Name") { this.value = ""; }">
-                 <input type="text" value="Type Here Password" onblur="if(this.value == "") { this.value ="Type Here Password"; }" onfocus="if(this.value =="Type Here Password") { this.value = ""; }">
+                 <input name="email" type="text" placeholder="Enter email">
+                 <input name="password" type="password"  placeholder="password">
                  <input type="submit" value="Login Now" class="ritekhela-bgcolor">
                  <a href="#" class="loginmodalbox-forget">Forget Password?</a>
              </form>
-             <div class="ritekhela-loginbox-social">
+             <!--<div class="ritekhela-loginbox-social">
                  <ul>
                      <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
                      <li class="twitter"><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
                      <li class="linkedin"><a href="#"><i class="fab fa-linkedin-in"></i> Linkedin</a></li>
                      <li class="dribbble"><a href="#"><i class="fab fa-dribbble"></i> Dribbble</a></li>
                  </ul>
-             </div>
+             </div>-->
           </div>
        </div>
     </div>
@@ -683,7 +691,8 @@ function logbox(){
 
 
 // Registration form
-function register(){
+function register()
+{
 
     echo ' <div class="loginmodalbox modal fade" id="ritekhelamodalrg" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -694,20 +703,26 @@ function register(){
                  <i class="fa fa-times"></i>
              </a>
              <form class="loginmodalbox-search regfrm">
-                 <input type="text" value="Enter User Name" onblur="if(this.value == "") { this.value ="Enter User Name"; }" onfocus="if(this.value =="Enter User Name") { this.value = ""; }">
-                 <input type="text" value="Type Your Password" onblur="if(this.value == "") { this.value ="Type Your Password"; }" onfocus="if(this.value =="Type Your Password") { this.value = ""; }">
-                 <input type="text" value="Confirm your password" onblur="if(this.value == "") { this.value ="Confirm your password"; }" onfocus="if(this.value =="Confirm your password") { this.value = ""; }">
+                    <center><label for="mm"><img src="images/avat1.png" style="height:150px;width:70%;"/></label></center>
+                   <center> <input type="file" id="mm"  style="margin-bottom:10px;margin-left:10px" ></center>
+                 <input type="text" name="name" placeholder="Full Name">
+                 <input type="text" name="email" placeholder="Email Address">
+                 <input type="text" name="phone" placeholder="Phone number with country code">
+                 <input type="text" name="address" placeholder="Address" style="height:70px;">
+
+                 <input type="password" placeholder=" Password">
+                 <input type="password" placeholder="Re-enter password  ">
                  <input type="submit" value="Sign Up" class="ritekhela-bgcolor">
-                 <a href="#" class="loginmodalbox-forget">Forget Password?</a>
+                 <!--<a href="#" class="loginmodalbox-forget">Forget Password?</a>-->
              </form>
-             <div class="ritekhela-loginbox-social">
+             <!--<div class="ritekhela-loginbox-social">
                  <ul>
                      <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
                      <li class="twitter"><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
                      <li class="linkedin"><a href="#"><i class="fab fa-linkedin-in"></i> Linkedin</a></li>
                      <li class="dribbble"><a href="#"><i class="fab fa-dribbble"></i> Dribbble</a></li>
                  </ul>
-             </div>
+             </div>-->
           </div>
        </div>
     </div>
@@ -716,7 +731,8 @@ function register(){
 
 // Search container
 
-function searchbox(){
+function searchbox()
+{
     echo ' <div class="loginmodalbox modal fade" id="ritekhelamodalsearch" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" role="document">
        <div class="modal-content">
@@ -735,36 +751,112 @@ function searchbox(){
  </div>';
 }
 
+
+// Strip bar checking if logged in or not
+
+function mybar()
+{
+    session_start();
+
+    if (!isset($_SESSION['uid'])) {
+        echo ' <div class="ritekhela-topstrip">
+       <div class="container">
+           <div class="row">
+               
+              <!-- <aside class="col-md-6">
+                   <strong>Latest News :</strong>
+                   <div class="ritekhela-latest-news-slider">
+                       <div class="ritekhela-latest-news-slider-layer">Welcome visitor you can Login or Create an Account </div>
+                       <div class="ritekhela-latest-news-slider-layer">While familiar with fellow European nation France Hareide. </div>
+                   </div>
+               </aside>-->
+               <aside class="col-md-6">
+                   <ul class="ritekhela-user-strip">
+                       
+                       <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalcenter"><i class="fa fa-user-alt"></i> Login</a></li>
+                       <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalrg"><i class="fa fa-sign-in-alt"></i> Signup</a></li>
+                   </ul>
+               </aside>
+
+           </div>
+       </div>
+   </div>';
+    } else {
+        echo ' <div class="ritekhela-topstrip">
+       <div class="container">
+           <div class="row">
+               
+               <aside class="col-md-6">
+                   <strong>'.$_SESSION['name'].'</strong>
+                  <!-- <div class="ritekhela-latest-news-slider">
+                       <div class="ritekhela-latest-news-slider-layer">Welcome visitor you can Login or Create an Account </div>
+                       <div class="ritekhela-latest-news-slider-layer">While familiar with fellow European nation France Hareide. </div>
+                   </div>-->
+               </aside>
+               <aside class="col-md-6">
+                   <ul class="ritekhela-user-strip">
+                       
+                       <li><a href="#"><i class="fa fa-envelope"></i> '.$_SESSION['email'].'</a></li>
+                       <li><a href="profile.php"><i class="fa fa-user-cog"></i> Profile</a></li>
+                       <li><a href="logout.php"><i class="fa fa-sign-in-alt"></i> Logout</a></li>
+
+                   </ul>
+               </aside>
+
+           </div>
+       </div>
+   </div>';
+    }
+}
+
 // Adding Contact Message
 
-function addmessage($sender,$email,$phone,$mess){
+function addmessage($sender, $email, $phone, $mess)
+{
     include 'db.php';
 
-    if($sender=="Your Name"){
+    if ($sender == "Your Name") {
         echo "Please enter your name ";
-    }
-    elseif($email=="Email"){
+    } elseif ($email == "Email") {
         echo "Please enter your valid email address";
-
-    }
-    elseif($phone=="Phone number"){
+    } elseif ($phone == "Phone number") {
         echo 'Please enter your valid phone number';
-
-    }
-    elseif($mess ==""){
+    } elseif ($mess == "") {
         echo "please enter your message ";
-    }
-    else{
+    } else {
         $dateadded = date("jS F, Y");
         $timeadded = date("h:i A");
-        $ins = mysqli_query($conn,"INSERT INTO contacts(sender,email,phone,comment,dateadded,timeadded) VALUES ('$sender','$email','$phone','$mess','$dateadded','$timeadded')");
-        if ($ins){
+        $ins = mysqli_query($conn, "INSERT INTO contacts(sender,email,phone,comment,dateadded,timeadded) VALUES ('$sender','$email','$phone','$mess','$dateadded','$timeadded')");
+        if ($ins) {
             echo 'ok';
-        }
-
-        else{
+        } else {
             echo " Failed to send message try again";
         }
     }
 }
-?>
+
+// Login function
+function  login($email, $password)
+{
+    include 'db.php';
+
+    if (empty($email)) {
+        echo " Enter your email";
+    } elseif (empty($password)) {
+        echo 'Enter your correct password';
+    }
+    else{
+        $password = md5($password);
+        $check = mysqli_query($conn,"SELECT * FROM client WHERE email='$email' AND password='$password' ");
+
+        if($row=mysqli_fetch_array($check)){
+            session_start();
+
+            $_SESSION['uid'] =$row['id'];
+            $_SESSION['name']= $row['name'];
+            $_SESSION['email'] = $row['email'];
+
+            echo 'login successful';
+        }
+    }
+}

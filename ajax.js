@@ -1,34 +1,50 @@
-$(function(){
+$(function () {
 
 
-    function isLoading(){
-        swal({   
-            title: "Validating!",   
+    function isLoading() {
+        swal({
+            title: "Validating!",
             text: "<small>Please wait........</small>",
             type: "info",
-            html: true 
-            });
+            html: true
+        });
     }
 
-    function resp(response){
+    function resp(response) {
 
-        if(response=="ok"){
-            swal({   
-                title: "Comment sent!",   
+        if (response == "ok") {
+            swal({
+                title: "Comment sent!",
                 text: "<small>Your comment is delivered successfully</small>",
                 type: "success",
-                html: true 
-                });
+                html: true
+            });
 
         }
-        else{
 
-            swal({   
-                title: "Warning!",   
+        else if(response == "login successful"){
+
+            swal({
+                title: "Success!",
+                text: "<small>login successful.</small>",
+                type: "success",
+                html: true,
+                timer: 3000,
+                showConfirmButton: false
+            }, function () {
+                window.location.reload();
+            });
+
+
+        }
+        else {
+
+            swal({
+                title: "Warning!",
                 text: "<small>" + response + "</small>",
                 type: "error",
-                html: true 
-                });
+                html: true
+            });
 
         }
 
@@ -37,9 +53,9 @@ $(function(){
 
     }
 
-    
 
-    $(".contfrm").submit(function(e){
+
+    $(".contfrm").submit(function (e) {
 
         e.preventDefault();
 
@@ -59,7 +75,7 @@ $(function(){
 
     })
 
-    $(".logfrm").submit(function(e){
+    $(".logfrm").submit(function (e) {
 
         e.preventDefault();
 
@@ -80,7 +96,7 @@ $(function(){
     })
 
 
-    $(".regfrm").submit(function(e){
+    $(".regfrm").submit(function (e) {
 
         e.preventDefault();
 

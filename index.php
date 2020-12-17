@@ -49,29 +49,7 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
         <header id="ritekhela-header" class="ritekhela-header-one">
             
             <!--// TopStrip //-->
-            <div class="ritekhela-topstrip">
-                <div class="container">
-                    <div class="row">
-                        
-                        <aside class="col-md-6">
-                            <strong>Latest News :</strong>
-                            <div class="ritekhela-latest-news-slider">
-                                <div class="ritekhela-latest-news-slider-layer">Welcome visitor you can Login or Create an Account </div>
-                                <div class="ritekhela-latest-news-slider-layer">While familiar with fellow European nation France Hareide. </div>
-                            </div>
-                        </aside>
-                        <aside class="col-md-6">
-                            <ul class="ritekhela-user-strip">
-                                <li><a href="#"><i class="fa fa-globe-asia"></i> Support</a></li>
-                                <li><a href="#"><i class="fa fa-dollar-sign"></i> Currency : USD</a></li>
-                                <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalcenter"><i class="fa fa-user-alt"></i> Login</a></li>
-                                <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalrg"><i class="fa fa-sign-in-alt"></i> Signup</a></li>
-                            </ul>
-                        </aside>
-
-                    </div>
-                </div>
-            </div>
+            <?php mybar();?>
             <!--// TopStrip //-->
             
             <!--// Main Header //-->

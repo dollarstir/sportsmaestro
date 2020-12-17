@@ -7,13 +7,19 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
 
  -->
 
- <?php include 'core.php';?>
+ <?php 
+//  session_start();
+ 
+ include 'core.php';
+ 
+ 
+ ?>
 
 <!doctype html>
 <html lang="zxx">
 
 
-<!-- contact-us41:21-->
+<!-- player-medium-wrsb41:32-->
 <head>
 
     <!-- meta tags -->
@@ -21,7 +27,7 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title><?php Apptitles(3) ;?></title>
+    <title><?php Apptitles(5) ;?></title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -50,11 +56,11 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
         <header id="ritekhela-header" class="ritekhela-header-one">
             
             <!--// TopStrip //-->
-           <?php mybar();?>
+            <?php mybar();?>
             <!--// TopStrip //-->
             
             <!--// Main Header //-->
-            <?php hbar(3);?>
+            <?php hbar(1);?>
             <!--// Main Header //-->
 
         </header>
@@ -65,11 +71,11 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Contact Us</h1>
+                        <h1>Player Medium W Right Sidebar</h1>
                         <ul class="ritekhela-breadcrumb">
                             <li><a href="#">Home</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li>Contact Us</li>
+                            <li><a href="#">Player</a></li>
+                            <li>Player Medium</li>
                         </ul>
                     </div>
                 </div>
@@ -81,95 +87,89 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
         <div class="ritekhela-main-content">
 
             <!--// Main Section //-->
-            <div class="ritekhela-main-section ritekhela-contact-map-full">
-                <div class="container-fluid">
-                    <div class="row">
-                        
-                        <!--// Full Section //-->
-                        <div class="ritekhela-contact-map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m19!1m8!1m3!1d161161.90145117947!2d-1.660656745224525!3d6.667103736298295!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0xfdb96da392fdf2b%3A0x6cfeb1df19146dae!2sFavor%20Chapel%20International%2C%2027Lesley%20Opoku%20Ware%20Dr%20R.C%2C%20C-RIDGE%20Lesley%20Opoku-Ware%20Drive%2C%20Nhyiaeso!3m2!1d6.6734107!2d-1.6312533!5e0!3m2!1sen!2sgh!4v1607946760779!5m2!1sen!2sgh" height="450"></iframe>
-                        </div>
-                        <!--// Full Section //-->
-
-                    </div>
-                </div>
-            </div>
-            <!--// Main Section //-->
-
-            <!--// Main Section //-->
             <div class="ritekhela-main-section ritekhela-fixture-list-full">
                 <div class="container">
                     <div class="row">
                         
                         <!--// Full Section //-->
-                        <div class="col-md-12">
-                            <div class="ritekhela-fancy-title-two">
-                                <h2>Contact Information</h2>
-                            </div>
-                            <div class="ritekhela-contact-list">
+                        <div class="col-md-8">
+
+                            <?php
+                                include 'db.php';
+                                $getuser = mysqli_query($conn,"SELECT * FROM client WHERE id='".$_SESSION['uid']."'");
+                                $row = mysqli_fetch_array($getuser);
+
+                            ?>
+                            <!--// Player //-->
+                            <div class="ritekhela-team ritekhela-team-view3">
                                 <ul class="row">
-                                    <li class="col-md-3">
-                                        <i class="fa fa-phone"></i>
-                                        <span>+233(0)244044013</span>
-                                        <span>+233(0)244044013</span>
+                                    <li class="col-md-12">
+                                        <figure>
+                                            <a href="#"><img src="extra-images/player-medium-1.jpg" alt=""></a>
+                                            <!-- <figcaption>
+                                                <a href="#" class="fab fa-facebook-f"></a>
+                                                <a href="#" class="fab fa-twitter"></a>
+                                                <a href="#" class="fab fa-instagram"></a>
+                                                <a href="#" class="fab fa-dribbble"></a>
+                                            </figcaption> -->
+                                        </figure>
+                                        <div class="ritekhela-team-view3-text">
+                                            <h2><a href="#"><?php echo $row['name'] ;?></a></h2>
+                                            <span><?php echo $row['utype'] ;?></span>
+                                            <p><?php echo $row['email'];?></p>
+                                            <p><?php echo $row['phone'];?></p>
+                                            <p><?php echo $row['address'];?></p>
+                                            <p><?php echo 'joined on ' . $row['datejoined'];?></p>
+                                            <!-- <a href="#" class="ritekhela-team-view3-btn">Read More <i class="fa fa-angle-right"></i></a> -->
+                                        </div>
+
+                                        
                                     </li>
-                                    <li class="col-md-3">
-                                        <i class="fas fa-envelope"></i>
-                                        <a href="#">info@example.com</a>
-                                        <a href="#">info@exampletwo.com</a>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <i class="fa fa-map-marker-alt"></i>
-                                        <span>27 Lesley Opoku Ware Drive,<br>Kumasi- Ghana</span>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <i class="fa fa-fax"></i>
-                                        <a href="#">Fax: +233(0)244044013</a>
-                                        <a href="#">+233(0)244044013</a>
-                                    </li>
+                                    
                                 </ul>
-                            </div>
-                            <!--// Fancy Title //-->
-                            <div class="ritekhela-fancy-title-two">
-                                <h2>Contact Here</h2>
-                            </div>
-                            <!--// Fancy Title //-->
+
+                                <!-- Update user form -->
                             <div class="ritekhela-form">
                                 <form class="contfrm">
+                                <p>
+                                    <label for="">Browse picture</label>
+                                        <input type="file" name="image" > </p>
                                     <p>
                                         <input type="text" value="Your Name" onblur="if(this.value == '') { this.value ='Your Name'; }" onfocus="if(this.value =='Your Name') { this.value = ''; }" name="sender" required=""> </p>
                                     <p>
                                         <input type="text" value="Email" onblur="if(this.value == '') { this.value ='Email'; }" onfocus="if(this.value =='Email') { this.value = ''; }" name="email" required=""> </p>
                                     <p>
                                         <input type="text" value="Phone number" onblur="if(this.value == '') { this.value ='Phone number'; }" onfocus="if(this.value =='Phone number') { this.value = ''; }" name="phone" required=""> </p>
+
+                                        
                                     <p class="ritekhela-comment">
-                                        <textarea placeholder="Comment" name="comment"></textarea>
+                                        <textarea placeholder="Address" name="address"></textarea>
                                     </p>
                                     <p class="ritekhela-submit">
-                                        <input type="submit" value="Send Now" class="ritekhela-bgcolor"> </p>
+                                        <input type="submit" value="Update" class="ritekhela-bgcolor"> </p>
                                 </form>
                             </div>
-                            <!--// Fancy Title //-->
-                            <div class="ritekhela-fancy-title">
-                                <div class="ritekhela-fancy-title-inner">
-                                    <h2>our Partner</h2>
-                                    <!-- <span>Is Your Team Ready For Next Match!</span> -->
-                                </div>
                             </div>
-                            <!--// Fancy Title //-->
-                            
-                            <!--// Partner //-->
-                            <!-- <div class="ritekhela-partner-view1">
-                                <ul class="row">
-                                    <li class="col-md-3"><a href="#"><img src="extra-images/partner-logo-1.jpg" alt=""></a></li>
-                                    <li class="col-md-3"><a href="#"><img src="extra-images/partner-logo-2.jpg" alt=""></a></li>
-                                    <li class="col-md-3"><a href="#"><img src="extra-images/partner-logo-3.jpg" alt=""></a></li>
-                                    <li class="col-md-3"><a href="#"><img src="extra-images/partner-logo-1.jpg" alt=""></a></li>
+                            <!--// Player //-->
+                            <!--// Pagination //-->
+                            <!-- <div class="ritekhela-pagination">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
                                 </ul>
                             </div> -->
-                            <!--// Partner //-->
+                            <!--// Pagination //-->
                         </div>
                         <!--// Full Section //-->
+
+                        <!--// SideBaar //-->
+                        
+                        <!--// SideBaar //-->
 
                     </div>
                 </div>
@@ -180,22 +180,20 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
         <!--// Content //-->
 
         <!--// Footer //-->
-       <?php  ft();?>
+        <?php  ft();?>
         <!--// Footer //-->
 
     </div>
 
 
-    
     <!--// Login ModalBox //-->
-    <?php logbox(); ?>
+    <?php logbox();?>
 
     <!--// Login ModalBox //-->
-    <?php register(); ?>
+    <?php register();?>
 
     <!--// Search ModalBox //-->
-    <?php searchbox(); ?>
-
+    <?php searchbox();?>
 
 
     <!-- jQuery -->
@@ -210,13 +208,11 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
     <script src="script/jquery.countdown.min.js"></script>
     <script src="script/functions.js"></script>
 
-
     <!-- Dolarsoft JS -->
     <script src="sweetalert.min.js"></script>
     <script src="ajax.js"></script>
-   
 </body>
 
 
-<!-- contact-us41:26-->
+<!-- player-medium-wrsb41:43-->
 </html>

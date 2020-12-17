@@ -7,20 +7,21 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
 
  -->
 
- <?php include 'core.php';?>
+<?php include 'core.php'; ?>
 <!doctype html>
 <html lang="zxx">
 
 
 <!-- gallery-simple41:17-->
+
 <head>
 
     <!-- meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title><?php Apptitles(4) ;?></title>
+
+    <title><?php Apptitles(4); ?></title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -31,6 +32,7 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/color.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="sweetalert.css">
 
 </head>
 
@@ -46,40 +48,18 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
 
         <!--// Header //-->
         <header id="ritekhela-header" class="ritekhela-header-one">
-            
-            <!--// TopStrip //-->
-            <div class="ritekhela-topstrip">
-                <div class="container">
-                    <div class="row">
-                        
-                        <aside class="col-md-6">
-                            <strong>Latest News :</strong>
-                            <div class="ritekhela-latest-news-slider">
-                                <div class="ritekhela-latest-news-slider-layer">Welcome visitor you can Login or Create an Account </div>
-                                <div class="ritekhela-latest-news-slider-layer">While familiar with fellow European nation France Hareide. </div>
-                            </div>
-                        </aside>
-                        <aside class="col-md-6">
-                            <ul class="ritekhela-user-strip">
-                                <li><a href="#"><i class="fa fa-globe-asia"></i> Support</a></li>
-                                <li><a href="#"><i class="fa fa-dollar-sign"></i> Currency : USD</a></li>
-                                <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalcenter"><i class="fa fa-user-alt"></i> Login</a></li>
-                                <li><a href="#" data-toggle="modal" data-target="#ritekhelamodalrg"><i class="fa fa-sign-in-alt"></i> Signup</a></li>
-                            </ul>
-                        </aside>
 
-                    </div>
-                </div>
-            </div>
             <!--// TopStrip //-->
-            
+            <?php mybar();?>
+            <!--// TopStrip //-->
+
             <!--// Main Header //-->
-            <?php hbar(4);?>
+            <?php hbar(4); ?>
             <!--// Main Header //-->
 
         </header>
         <!--// Header //-->
-        
+
         <!--// SubHeader //-->
         <div class="ritekhela-subheader">
             <div class="container">
@@ -104,7 +84,7 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
             <div class="ritekhela-main-section ritekhela-fixture-list-full">
                 <div class="container">
                     <div class="row">
-                        
+
                         <!--// Full Section //-->
                         <div class="col-md-12">
                             <!--// Gallery //-->
@@ -246,86 +226,20 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
         <!--// Content //-->
 
         <!--// Footer //-->
-       <?php ft();?>
+        <?php ft(); ?>
         <!--// Footer //-->
 
     </div>
 
 
     <!--// Login ModalBox //-->
-    <div class="loginmodalbox modal fade" id="ritekhelamodalcenter" tabindex="-1">
-       <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-             <div class="modal-body ritekhela-bgcolor-two">
-                <h5 class="modal-title">Login To Your Account</h5>
-                <a href="#" class="close ritekhela-bgcolor-two" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-times"></i>
-                </a>
-                <form class="loginmodalbox-search">
-                    <input type="text" value="Enter User Name" onblur="if(this.value == '') { this.value ='Enter User Name'; }" onfocus="if(this.value =='Enter User Name') { this.value = ''; }">
-                    <input type="text" value="Type Here Password" onblur="if(this.value == '') { this.value ='Type Here Password'; }" onfocus="if(this.value =='Type Here Password') { this.value = ''; }">
-                    <input type="submit" value="Login Now" class="ritekhela-bgcolor">
-                    <a href="#" class="loginmodalbox-forget">Forget Password?</a>
-                </form>
-                <div class="ritekhela-loginbox-social">
-                    <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                        <li class="twitter"><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li class="linkedin"><a href="#"><i class="fab fa-linkedin-in"></i> Linkedin</a></li>
-                        <li class="dribbble"><a href="#"><i class="fab fa-dribbble"></i> Dribbble</a></li>
-                    </ul>
-                </div>
-             </div>
-          </div>
-       </div>
-    </div>
+    <?php logbox(); ?>
 
     <!--// Login ModalBox //-->
-    <div class="loginmodalbox modal fade" id="ritekhelamodalrg" tabindex="-1">
-       <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-             <div class="modal-body ritekhela-bgcolor-two">
-                <h5 class="modal-title">Sign Up Now</h5>
-                <a href="#" class="close ritekhela-bgcolor-two" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-times"></i>
-                </a>
-                <form class="loginmodalbox-search">
-                    <input type="text" value="Enter User Name" onblur="if(this.value == '') { this.value ='Enter User Name'; }" onfocus="if(this.value =='Enter User Name') { this.value = ''; }">
-                    <input type="text" value="Type Your Password" onblur="if(this.value == '') { this.value ='Type Your Password'; }" onfocus="if(this.value =='Type Your Password') { this.value = ''; }">
-                    <input type="text" value="Confirm your password" onblur="if(this.value == '') { this.value ='Confirm your password'; }" onfocus="if(this.value =='Confirm your password') { this.value = ''; }">
-                    <input type="submit" value="Sign Up" class="ritekhela-bgcolor">
-                    <a href="#" class="loginmodalbox-forget">Forget Password?</a>
-                </form>
-                <div class="ritekhela-loginbox-social">
-                    <ul>
-                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                        <li class="twitter"><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li class="linkedin"><a href="#"><i class="fab fa-linkedin-in"></i> Linkedin</a></li>
-                        <li class="dribbble"><a href="#"><i class="fab fa-dribbble"></i> Dribbble</a></li>
-                    </ul>
-                </div>
-             </div>
-          </div>
-       </div>
-    </div>
+    <?php register(); ?>
 
     <!--// Search ModalBox //-->
-    <div class="loginmodalbox modal fade" id="ritekhelamodalsearch" tabindex="-1">
-       <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-             <div class="modal-body ritekhela-bgcolor-two">
-                <h5 class="modal-title">Search Here</h5>
-                <a href="#" class="close ritekhela-bgcolor-two" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-times"></i>
-                </a>
-                <form>
-                    <input type="text" value="Search Here Now" onblur="if(this.value == '') { this.value ='Search Here Now'; }" onfocus="if(this.value =='Search Here Now') { this.value = ''; }">
-                    <input type="submit" value="Search Now" class="ritekhela-bgcolor">
-                </form>
-             </div>
-          </div>
-       </div>
-    </div>
+    <?php searchbox(); ?>
 
 
     <!-- jQuery -->
@@ -339,8 +253,14 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
     <script src="script/progressbar.js"></script>
     <script src="script/jquery.countdown.min.js"></script>
     <script src="script/functions.js"></script>
+
+
+     <!-- Dolarsoft JS -->
+     <script src="sweetalert.min.js"></script>
+    <script src="ajax.js"></script>
 </body>
 
 
 <!-- gallery-simple41:17-->
+
 </html>

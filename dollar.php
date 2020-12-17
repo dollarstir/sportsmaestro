@@ -14,6 +14,19 @@ if(isset($_GET['action'])){
         # code...
     }
 
+    if ($_GET['action']=="login") {
+        include 'db.php';
+
+        extract($_POST);
+        $email= mysqli_real_escape_string($conn,$email);
+        $password= mysqli_real_escape_string($conn,$password);
+
+
+        login($email,$password);
+        # code...
+    }
+
 }
+
 
 ?>
