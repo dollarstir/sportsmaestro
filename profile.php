@@ -8,9 +8,13 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
  -->
 
  <?php 
-//  session_start();
+ session_start();
  
  include 'core.php';
+
+ $r1 = 'NSI';
+        $r2= rand(1111111,9999999);
+        $myref = $r1.''.$r2;
  
  
  ?>
@@ -105,7 +109,7 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                                 <ul class="row">
                                     <li class="col-md-12">
                                         <figure>
-                                            <a href="#"><img src="extra-images/player-medium-1.jpg" alt=""></a>
+                                            <a href="#"><img src="upload/<?php echo $row['pic'] ;?>" alt="" style="width:250px;height:320px;"></a>
                                             <!-- <figcaption>
                                                 <a href="#" class="fab fa-facebook-f"></a>
                                                 <a href="#" class="fab fa-twitter"></a>
@@ -115,7 +119,49 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                                         </figure>
                                         <div class="ritekhela-team-view3-text">
                                             <h2><a href="#"><?php echo $row['name'] ;?></a></h2>
-                                            <span><?php echo $row['utype'] ;?></span>
+                                            <span><?php echo $row['utype'] ;?></span> 
+
+                                            <?php
+                                            
+                                            $esp= mysqli_query($conn,"SELECT * FROM client WHERE id='".$_SESSION['uid']."'");
+
+                                            $rx= mysqli_fetch_array($esp);
+
+                                            if($rx['pstatus']=="unpiad" || $rx['pstatus']==""){
+                                                
+                                                echo '<p><span style="background-color:red;color:#f1f1f1;text-transform:none;">Your account is inactive</span> 
+                                                <form id="paymentForm"> 
+                                                <input type="hidden" value="'.$myref.'" name="ref"/>
+                                                <input type="hidden" value="'.$rx['id'].'" name="cid"/> 
+                                                
+                                                <button type="button"  onclick="payWithPaystack()" class="btn btn-success">Activate </button>
+                                                
+                                                </form></p>';
+                                            }
+                                            else{
+                                                    $exp = $rx['expiredate'];
+                                                    $md = date("y-m-d");
+                                                    if( $exp > $md ){
+                                                        echo '<p><span style="background-color:green;color:#f1f1f1;text-transform:none;">Your account is active</span>  </p>';
+                                                    }
+                                                    elseif($exp == $md){
+                                                        echo '<p><span style="background-color:orange;color:#f1f1f1;text-transform:none;">Your account will expire today</span>  </p>';
+                                                    }
+                                                    elseif($exp < ($md)){
+                                                echo '<p><span style="background-color:red;color:#f1f1f1;text-transform:none;">Your account is expired</span> 
+                                                <form id="paymentForm">
+                                                <input type="hidden" value="'.$myref.'" name="ref"/>
+                                                <input type="hidden" value="'.$rx['id'].'" name="cid"/>  
+                                                <button type="button"  onclick="payWithPaystack()" class="btn btn-success">Reactivate </button>
+                                                </form></p>';
+                                                        
+                                                    }
+
+                                            }
+                                            
+                                            
+                                            ?>
+                                            
                                             <p><?php echo $row['email'];?></p>
                                             <p><?php echo $row['phone'];?></p>
                                             <p><?php echo $row['address'];?></p>
@@ -128,22 +174,68 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                                     
                                 </ul>
 
+                                <!-- Codes for  Sending money begins -->
+
+                                <?php
+            // $mmm = preg_split("/ /",$name);
+            $tt = 50;
+            $mna = explode(' ',$rx['name']);  
+            // echo $mna[0];
+
+            function convertCurrency($amount,$from_currency,$to_currency){
+                $apikey = 'b956567a2dd5aa819f1e';
+              
+                $from_Currency = urlencode($from_currency);
+                $to_Currency = urlencode($to_currency);
+                $query =  "{$from_Currency}_{$to_Currency}";
+              
+                // change to the free URL if you're using the free version
+                $json = file_get_contents("https://free.currconv.com/api/v7/convert?q={$query}&compact=ultra&apiKey={$apikey}");
+                $obj = json_decode($json, true);
+              
+                $val = floatval($obj["$query"]);
+              
+              
+                $total = $val * $amount;
+                return number_format($total, 2, '.', '');
+              }
+              
+              //uncomment to test
+              $amt =convertCurrency($tt, 'USD', 'GHS');
+            //   echo 'GHc'.$amt;
+             
+              
+        // $amg = floatval($amt);
+        // echo $amt;
+        $fname = $mna[0];
+        $lname = $mna[1];
+        $email = $rx['email'];
+        $amount =$amt;
+        
+        
+        ?>
+
+
+
+                                <!-- Codes for sending money Ends -->
+
                                 <!-- Update user form -->
                             <div class="ritekhela-form">
-                                <form class="contfrm">
+                                <form class="updufrm">
                                 <p>
                                     <label for="">Browse picture</label>
                                         <input type="file" name="image" > </p>
                                     <p>
-                                        <input type="text" value="Your Name" onblur="if(this.value == '') { this.value ='Your Name'; }" onfocus="if(this.value =='Your Name') { this.value = ''; }" name="sender" required=""> </p>
+                                        <input type="text" value="<?php echo $row['name'];?>" name="name" required=""> </p>
                                     <p>
-                                        <input type="text" value="Email" onblur="if(this.value == '') { this.value ='Email'; }" onfocus="if(this.value =='Email') { this.value = ''; }" name="email" required=""> </p>
+                                        <input type="text" value="<?php echo $row['email'];?>"  name="email" required=""> </p>
                                     <p>
-                                        <input type="text" value="Phone number" onblur="if(this.value == '') { this.value ='Phone number'; }" onfocus="if(this.value =='Phone number') { this.value = ''; }" name="phone" required=""> </p>
+                                        <input type="text" value="<?php echo $row['phone'];?>" name="phone" required=""> </p>
+                                        <input type="hidden" value="<?php echo $row['id'];?>" name="id" required=""> </p>
 
                                         
                                     <p class="ritekhela-comment">
-                                        <textarea placeholder="Address" name="address"></textarea>
+                                        <textarea placeholder="Address" name="address"><?php echo $row['address'];?></textarea>
                                     </p>
                                     <p class="ritekhela-submit">
                                         <input type="submit" value="Update" class="ritekhela-bgcolor"> </p>
@@ -195,7 +287,6 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
     <!--// Search ModalBox //-->
     <?php searchbox();?>
 
-
     <!-- jQuery -->
     <script src="script/jquery.js"></script>
     <script src="script/popper.min.js"></script>
@@ -207,6 +298,121 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
     <script src="script/progressbar.js"></script>
     <script src="script/jquery.countdown.min.js"></script>
     <script src="script/functions.js"></script>
+
+
+
+
+ <!-- Payment Script -->
+
+ <script>
+            var paymentForm = document.getElementById('paymentForm');
+
+            paymentForm.addEventListener('submit', payWithPaystack, false);
+
+            function payWithPaystack() {
+                
+                var handler = PaystackPop.setup({
+                
+                    key: 'pk_test_25b3d5f8bfb5621c4569175877020aafe6085a0a', // Replace with your public key
+                
+                    email: '<?php echo $email?>',
+                
+                    amount: <?php echo $amount * 100;?>, // the amount value is multiplied by 100 to convert to the lowest currency unit
+                
+                    currency: 'GHS', // Use GHS for Ghana Cedis or USD for US Dollars
+                
+                    firstname: '<?php echo $fname?>',
+                
+                    lastname: '<?php echo $lname?>',
+                
+                    ref: '<?php echo $myref ;?>', // Replace with a reference you generated
+                    metadata: {
+                        custom_fields : 
+                            [
+                                    {
+                                        display_name: 'Mobile Number',
+                                        variable_name: 'mobile_number',
+                                        value:"+233556676471"
+                                    }
+                                    
+                            
+                            ]
+                    },
+                
+                    callback: function(response) {
+                
+                    //this happens after the payment is completed successfully
+                
+                    var reference = response.reference;
+                    var fname  = '<?php echo $fname;?>';
+                    var lname = '<?php echo $lname;?>';
+                    var email = '<?php echo $email;?>';
+                    var amount = '<?php echo $amount;?>';
+                
+                    //   alert('Payment complete! Reference: ' + reference);
+                    // window.location='success.php?ref='+ reference + '&fname=' + fname + '&lname=' + lname + '&email=' + email + '&amount=' + amount ;
+                    
+                    // Make an AJAX call to your server with the reference to verify the transaction
+                    
+                        if(response.status == "success"){
+                            var myrf = '<?php echo $myref ?>';
+                            var mimi = 'dollar';
+                            var formdt = $('#paymentForm')[0]; // You need to use standard javascript object here
+                            var formData = new FormData(formdt);
+                        
+                            var opt = {
+                                url : "dollar.php?action=paysuccess",
+                                type: "post",
+                                data:formData ,
+                                contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+                                processData: false,
+                                cache:false, // NEEDED, DON'T OMIT THIS
+
+                                success: function(rep){
+                                setTimeout(function () { 
+                                    swal({
+                                    title: "Success!",
+                                    text: "<small>You purchase is successfull  </small>",
+                                    type: "success",
+                                    html: true,
+                                    confirmButtonText: "OK"
+                                    },
+                                    function(isConfirm){
+                                    if (isConfirm) {
+                                        window.location = "profile.php";
+                                    }
+                                    }); }, 1000);
+                                }
+                                
+                            }
+                            $.ajax(opt);
+                        
+                            
+
+                                
+                        
+                        }            
+                    },
+                
+                    onClose: function() {
+                
+                    alert('Transaction was not completed, window closed.');
+                
+                    },
+                
+                });
+                
+                handler.openIframe();
+                
+                }
+        </script>
+
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+
+
+    
 
     <!-- Dolarsoft JS -->
     <script src="sweetalert.min.js"></script>

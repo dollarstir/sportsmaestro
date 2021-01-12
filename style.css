@@ -2347,7 +2347,7 @@ li:hover .ritekhela-blog-view3-text-btn {
 }
 .modal-backdrop.show {
     opacity: 0.85; }
-.loginmodalbox input[type="text"],input[type="password"] {
+.loginmodalbox input[type="text"],input[type="password"],select {
     float: left;
     width: 100%;
     background-color: rgba(0,0,0,0.20);

@@ -7,7 +7,9 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
 
  -->
 
- <?php include 'core.php';?>
+ <?php
+  session_start();
+ include 'core.php';?>
 <!doctype html>
 <html lang="zxx">
 
@@ -31,7 +33,7 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/color.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="sweetalert.css">
+        <link rel="stylesheet" href="sweetalert.css">
 
 </head>
 
@@ -64,7 +66,7 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
             
             <div class="ritekhela-banner-one-layer">
                 <span class="ritekhela-banner-transparent"></span>
-                <img src="extra-images/banner-2.jpg" alt="">
+                <img src="images/final.jpg" alt="">
                 <div class="ritekhela-banner-caption">
                     <div class="container">
                         <div class="row">
@@ -112,7 +114,10 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                             
                             <!--// Fixture Slider //-->
                             <div class="ritekhela-fixture-slider">
-                                <div class="ritekhela-fixture-slider-layer">
+
+
+                            <?php sliderplayer();?>
+                                <!-- <div class="ritekhela-fixture-slider-layer">
                                     <div class="ritekhela-fixture-box">
                                             <img src="extra-images/team-view1-2.jpg" alt="" style="height:250px;width:100%;">
                                     </div>
@@ -141,7 +146,7 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                                     <div class="ritekhela-fixture-box">
                                     <img src="extra-images/team-view1-6.jpg" alt="" style="height:250px;width:100%;">
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <!--// Fixture Slider //-->
 
@@ -242,7 +247,9 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                             <!--// Player //-->
                             <div class="ritekhela-team ritekhela-team-view1">
                                 <ul class="row">
-                                    <li class="col-md-4">
+
+                                <?php  displayer() ;?>
+                                    <!-- <li class="col-md-4">
                                         <figure>
                                             <a href="#"><img src="extra-images/team-view1-1.jpg" alt=""></a>
                                             <figcaption>
@@ -292,7 +299,7 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                                             <p>Lorem ipsum dolor sit met, con etur adipiscing elit. Ut c males ante.</p>
                                             <a href="#" class="ritekhela-team-view1-btn">Read More <i class="fa fa-angle-right"></i></a>
                                         </div>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                             <!--// Player //-->
@@ -331,60 +338,7 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                             <!--// Gallery //-->
                             <div class="ritekhela-gallery ritekhela-gallery-view1">
                                 <ul class="row">
-                                    <li class="col-md-4">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-1.jpg" class="fancybox"><img src="extra-images/gallery-view1-1.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">11 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>The Champion Final will be played</h2>
-                                    </li>
-                                    <li class="col-md-4">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-2.jpg" class="fancybox"><img src="extra-images/gallery-view1-2.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">06 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>will be played The Champion Final</h2>
-                                    </li>
-                                    <li class="col-md-4">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-3.jpg" class="fancybox"><img src="extra-images/gallery-view1-3.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">14 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>Champion Final The will be played</h2>
-                                    </li>
-                                    <li class="col-md-4">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-4.jpg" class="fancybox"><img src="extra-images/gallery-view1-4.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">12 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>will be The Chamn Final played</h2>
-                                    </li>
-                                    <li class="col-md-4">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-5.jpg" class="fancybox"><img src="extra-images/gallery-view1-5.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">25 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>be played The Champion Final will</h2>
-                                    </li>
-                                    <li class="col-md-4">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-6.jpg" class="fancybox"><img src="extra-images/gallery-view1-6.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">04 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>played The Chaion Final will be</h2>
-                                    </li>
+                                    <?php  displaygall();?>
                                 </ul>
                             </div>
                             <!--// Gallery //-->
@@ -590,11 +544,11 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                                 <div class="ritekhela-fancy-title-two">
                                     <h2>Our Newsletter</h2>
                                 </div>
-                                <form>
+                                <form class="newsfrm">
                                     <label>Subscribe Now</label>
                                     <p>Get notification when new player sign on</p>
-                                    <input type="text" value="Your Name" onblur="if(this.value == '') { this.value ='Your Name'; }" onfocus="if(this.value =='Your Name') { this.value = ''; }">
-                                    <input type="text" value="Enter Your email" onblur="if(this.value == '') { this.value ='Enter Your email'; }" onfocus="if(this.value =='Enter Your email') { this.value = ''; }">
+                                    <input type="text" name="name" value="Your Name" onblur="if(this.value == '') { this.value ='Your Name'; }" onfocus="if(this.value =='Your Name') { this.value = ''; }">
+                                    <input type="text" name="email" value="Enter Your email" onblur="if(this.value == '') { this.value ='Enter Your email'; }" onfocus="if(this.value =='Enter Your email') { this.value = ''; }">
                                     <input type="submit" value="Subscribe Now">
                                 </form>
                             </div>

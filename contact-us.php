@@ -7,7 +7,9 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
 
  -->
 
- <?php include 'core.php';?>
+ <?php 
+  session_start();
+ include 'core.php';?>
 
 <!doctype html>
 <html lang="zxx">

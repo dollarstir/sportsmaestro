@@ -7,7 +7,9 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
 
  -->
 
-<?php include 'core.php'; ?>
+<?php 
+ session_start();
+include 'core.php'; ?>
 <!doctype html>
 <html lang="zxx">
 
@@ -90,119 +92,28 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                             <!--// Gallery //-->
                             <div class="ritekhela-gallery ritekhela-gallery-view1">
                                 <ul class="row">
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-1.jpg" class="fancybox"><img src="extra-images/gallery-view1-1.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">11 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>The Champion Final will be played</h2>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-2.jpg" class="fancybox"><img src="extra-images/gallery-view1-2.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">06 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>will be played The Champion Final</h2>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-3.jpg" class="fancybox"><img src="extra-images/gallery-view1-3.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">14 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>Champion Final The will be played</h2>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-4.jpg" class="fancybox"><img src="extra-images/gallery-view1-4.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">12 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>will be The Chamn Final played</h2>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-5.jpg" class="fancybox"><img src="extra-images/gallery-view1-5.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">25 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>be played The Champion Final will</h2>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-6.jpg" class="fancybox"><img src="extra-images/gallery-view1-6.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">04 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>played The Chaion Final will be</h2>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-2.jpg" class="fancybox"><img src="extra-images/gallery-view1-2.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">06 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>will be played The Champion Final</h2>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-3.jpg" class="fancybox"><img src="extra-images/gallery-view1-3.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">14 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>Champion Final The will be played</h2>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-3.jpg" class="fancybox"><img src="extra-images/gallery-view1-3.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">14 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>Champion Final The will be played</h2>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-4.jpg" class="fancybox"><img src="extra-images/gallery-view1-4.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">12 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>will be The Chamn Final played</h2>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-5.jpg" class="fancybox"><img src="extra-images/gallery-view1-5.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">25 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>be played The Champion Final will</h2>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <figure>
-                                            <a data-fancybox-group="group" href="extra-images/gallery-view1-6.jpg" class="fancybox"><img src="extra-images/gallery-view1-6.jpg" alt=""> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
-                                            <figcaption>
-                                                <span class="ritekhela-bgcolor-two">04 Photos</span>
-                                            </figcaption>
-                                        </figure>
-                                        <h2>played The Chaion Final will be</h2>
-                                    </li>
+                                    <?php
+                                    
+                                        include 'db.php';
+                                        
+                                        $dsi= mysqli_query($conn,"SELECT * FROM gallery ORDER BY id DESC ");
+                                        while ($rg= mysqli_fetch_array($dsi)) {
+                                            echo '<li class="col-md-3">
+                                            <figure>
+                                                <a data-fancybox-group="group" href="mg/'.$rg['pic'].'" class="fancybox"><img src="mg/'.$rg['pic'].'" alt="" style="height:350px;"> <i class="fa fa-plus ritekhela-bgcolor"></i> </a>
+                                                
+                                            </figure>
+                                           
+                                        </li>';
+                                            # code...
+                                        }
+                                    ?>
+
                                 </ul>
                             </div>
                             <!--// Gallery //-->
                             <!--// Pagination //-->
-                            <div class="ritekhela-pagination">
+                            <!--<div class="ritekhela-pagination">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
                                     <li><a href="#">1</a></li>
