@@ -289,4 +289,9 @@ $(function () {
 
     })
 
+    $(".pt").click(function(){
+        $(this).hide();
+        window.print();
+    })
+
 })

@@ -1147,8 +1147,11 @@
                     $getpray = mysqli_query($conn,"SELECT * FROM player WHERE id='$pid' ");
                     $pray = mysqli_fetch_array($getpray);
 
+                    $getpci = mysqli_query($conn,"SELECT * FROM client WHERE id='$cid' ");
+                    $pcid = mysqli_fetch_array($getpci);
 
-                            $to = 'kpin463@gmail.com';
+
+                            $to = $pcid['email'];
                             $subject = 'Next Sports Maestro';
                             $from = 'dollarsoft463@gmail.com';
                             
@@ -1164,7 +1167,7 @@
                             // Compose a simple HTML email message
                             $message = '<html><body>';
                             $message .= '<p>Thank you for making offer for '.$pray['pname'].' </p>';
-                            $message .= '<p><ahref=""></a></p>';
+                            $message .= '<p><ahref="http://www.nextsportsmaestro/mailtry.php?ucid='.$cid.'&upid='.$pid.'"></a></p>';
                             $message .= '</body></html>';
                             
                             // Sending email

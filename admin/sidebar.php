@@ -78,11 +78,7 @@ echo ' <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" d
         <li><a href="View-booking.php" ><i class="bx bx-right-arrow-alt"></i><span class="menu-item" data-i18n="Coming Soon">View New Bookings</span></a>
         </li>
         
-        <li><a href="view-active.php"><i class="bx bx-right-arrow-alt"></i><span class="menu-item" data-i18n="Not Authorized">View Active Bookings</span></a>
-        </li>
-
-        <li><a href="view-expired.php"><i class="bx bx-right-arrow-alt"></i><span class="menu-item" data-i18n="Not Authorized">View  Expired Bookings</span></a>
-        </li>
+        
        
       </ul>
     </li>

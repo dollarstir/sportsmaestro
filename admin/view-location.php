@@ -1230,9 +1230,7 @@ if (!isset($_SESSION['id']))
                                         <th>Picture</th>
                                         <th>Phone</th>
                                         <th>Address</th>
-                                        <th>Country</th>
-                                        <th>State</th>
-                                        <th>Zip Code</th>
+                                        
                                         <th>Status</th>
                                         <th>Date Added</th>
                                         <th>Action</th>

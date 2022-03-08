@@ -1,648 +1,328 @@
 <?php
 
-include 'core.php';
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\Exception;
 
+
+// require_once "vendor/autoload.php";
+
+// //PHPMailer Object
+// $mail = new PHPMailer(true);
+
+// //Enable SMTP debugging.
+// $mail->SMTPDebug = 3;                               
+// //Set PHPMailer to use SMTP.
+// $mail->isSMTP();            
+// //Set SMTP host name                          
+// $mail->Host = "smtp.gmail.com";
+// //Set this to true if SMTP host requires authentication to send email
+// $mail->SMTPAuth = true;                          
+// //Provide username and password     
+// $mail->Username = "kpin463@gmail.com";                 
+// $mail->Password = "kingpin1234";                           
+// //If SMTP requires TLS encryption then set it
+// $mail->SMTPSecure = "tls";                           
+// //Set TCP port to connect to
+// $mail->Port = 587;                                   
+
+// $mail->From = "dollarsoft463@gmail.com";
+// $mail->FromName = "Full Name";
+
+// $mail->addAddress("kpin463@gmail.com", "Recepient Name");
+
+// $mail->isHTML(true);
+
+// $mail->Subject = "Subject Text";
+// $mail->Body = "<i>Mail body in HTML</i>";
+// $mail->AltBody = "This is the plain text version of the email content";
+
+// try {
+//     $mail->send();
+//     echo "Message has been sent successfully";
+// } catch (Exception $e) {
+//     echo "Mailer Error: " . $mail->ErrorInfo;
+// }
 ?>
-<!DOCTYPE html>
 
-<html class="loading" lang="en" data-textdirection="ltr">
-  <!-- BEGIN: Head-->
-  <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <meta name="description" content="Buttercups Tours">
-    <meta name="keywords" content="Buttercups Tours">
-    <meta name="Buttercups" content="PIXINVENT">
-    <title>Buttercups Tours - View Booking</title>
+<?php 
+    include 'db.php';
+    $playerid = $_GET['upid'] ;
+    $cid= $_GET['ucid'];
+    $getdeal = mysqli_query($conn,"SELECT * FROM request WHERE pid= '$playerid' AND cid='$cid' ");
+    $row = mysqli_fetch_array($getdeal);
+    extract($row);
+
+    $see = mysqli_query($conn,"SELECT * FROM player WHERE id ='$playerid' ");
+    $mp =mysqli_fetch_array($see);
+
+    $cee = mysqli_query($conn,"SELECT * FROM client WHERE id ='$cid' ");
+    $ce =mysqli_fetch_array($cee);
+
+
     
-    <link rel="apple-touch-icon" href="https://www.pixinvent.com/demo/frest-clean-bootstrap-admin-dashboard-template/app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/ico/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
+?>
 
-    <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
-    <!-- END: Vendor CSS-->
 
-    <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap-extended.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/colors.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/components.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/dark-layout.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/semi-dark-layout.min.css">
-    <!-- END: Theme CSS-->
+<!doctype html>
+<html lang="zxx">
 
-    <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/pages/page-users.min.css">
-    <!-- END: Page CSS-->
 
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <!-- END: Custom CSS-->
+<!-- blog-detail42:00-->
 
-  </head>
-  <!-- END: Head-->
+<head>
 
-  <!-- BEGIN: Body-->
-  <body class="vertical-layout vertical-menu-modern boxicon-layout no-card-shadow 2-columns  navbar-sticky footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- BEGIN: Header-->
-    <div class="header-navbar-shadow"></div>
-    <!-- <nav class="header-navbar main-header-navbar navbar-expand-lg navbar navbar-with-menu fixed-top ">
-      <div class="navbar-wrapper">
-        <div class="navbar-container content">
-          <div class="navbar-collapse" id="navbar-mobile">
-            <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
-              <ul class="nav navbar-nav">
-                <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="page-users-view.html#"><i class="ficon bx bx-menu"></i></a></li>
-              </ul>
-              <ul class="nav navbar-nav bookmark-icons">
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-email.html" data-toggle="tooltip" data-placement="top" title="Email"><i class="ficon bx bx-envelope"></i></a></li>
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-chat.html" data-toggle="tooltip" data-placement="top" title="Chat"><i class="ficon bx bx-chat"></i></a></li>
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-todo.html" data-toggle="tooltip" data-placement="top" title="Todo"><i class="ficon bx bx-check-circle"></i></a></li>
-                <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-calendar.html" data-toggle="tooltip" data-placement="top" title="Calendar"><i class="ficon bx bx-calendar-alt"></i></a></li>
-              </ul>
-              <ul class="nav navbar-nav">
-                <li class="nav-item d-none d-lg-block"><a class="nav-link bookmark-star"><i class="ficon bx bx-star warning"></i></a>
-                  <div class="bookmark-input search-input">
-                    <div class="bookmark-input-icon"><i class="bx bx-search primary"></i></div>
-                    <input class="form-control input" type="text" placeholder="Explore Frest..." tabindex="0" data-search="template-search">
-                    <ul class="search-list"></ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <ul class="nav navbar-nav float-right">
-              <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="page-users-view.html#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-us"></i><span class="selected-language">English</span></a>
-                <div class="dropdown-menu" aria-labelledby="dropdown-flag"><a class="dropdown-item" href="page-users-view.html#" data-language="en"><i class="flag-icon flag-icon-us mr-50"></i> English</a><a class="dropdown-item" href="page-users-view.html#" data-language="fr"><i class="flag-icon flag-icon-fr mr-50"></i> French</a><a class="dropdown-item" href="page-users-view.html#" data-language="de"><i class="flag-icon flag-icon-de mr-50"></i> German</a><a class="dropdown-item" href="page-users-view.html#" data-language="pt"><i class="flag-icon flag-icon-pt mr-50"></i> Portuguese</a></div>
-              </li>
-              <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i class="ficon bx bx-fullscreen"></i></a></li>
-              <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon bx bx-search"></i></a>
-                <div class="search-input">
-                  <div class="search-input-icon"><i class="bx bx-search primary"></i></div>
-                  <input class="input" type="text" placeholder="Explore Frest..." tabindex="-1" data-search="template-search">
-                  <div class="search-input-close"><i class="bx bx-x"></i></div>
-                  <ul class="search-list"></ul>
-                </div>
-              </li>
-              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="page-users-view.html#" data-toggle="dropdown"><i class="ficon bx bx-bell bx-tada bx-flip-horizontal"></i><span class="badge badge-pill badge-danger badge-up">5</span></a>
-                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
-                  <li class="dropdown-menu-header">
-                    <div class="dropdown-header px-1 py-75 d-flex justify-content-between"><span class="notification-title">7 new Notification</span><span class="text-bold-400 cursor-pointer">Mark all as read</span></div>
-                  </li>
-                  <li class="scrollable-container media-list"><a class="d-flex justify-content-between" href="javascript:void(0)">
-                      <div class="media d-flex align-items-center">
-                        <div class="media-left pr-0">
-                          <div class="avatar mr-1 m-0"><img src="app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="39" width="39"></div>
-                        </div>
-                        <div class="media-body">
-                          <h6 class="media-heading"><span class="text-bold-500">Congratulate Socrates Itumay</span> for work anniversaries</h6><small class="notification-text">Mar 15 12:32pm</small>
-                        </div>
-                      </div></a>
-                    <div class="d-flex justify-content-between read-notification cursor-pointer">
-                      <div class="media d-flex align-items-center">
-                        <div class="media-left pr-0">
-                          <div class="avatar mr-1 m-0"><img src="app-assets/images/portrait/small/avatar-s-16.jpg" alt="avatar" height="39" width="39"></div>
-                        </div>
-                        <div class="media-body">
-                          <h6 class="media-heading"><span class="text-bold-500">New Message</span> received</h6><small class="notification-text">You have 18 unread messages</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="d-flex justify-content-between cursor-pointer">
-                      <div class="media d-flex align-items-center py-0">
-                        <div class="media-left pr-0"><img class="mr-1" src="app-assets/images/icon/sketch-mac-icon.png" alt="avatar" height="39" width="39"></div>
-                        <div class="media-body">
-                          <h6 class="media-heading"><span class="text-bold-500">Updates Available</span></h6><small class="notification-text">Sketch 50.2 is currently newly added</small>
-                        </div>
-                        <div class="media-right pl-0">
-                          <div class="row border-left text-center">
-                            <div class="col-12 px-50 py-75 border-bottom">
-                              <h6 class="media-heading text-bold-500 mb-0">Update</h6>
+    <title>NSM CONTRACT</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/fontawesome-all.css">
+    <link rel="stylesheet" href="../css/slick-slider.css">
+    <link rel="stylesheet" href="../css/fancybox.css">
+    <link rel="stylesheet" href="../css/smartmenus.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/color.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+
+<body class="home">
+    <div id="ritekhela-loader">
+        <div id="ritekhela-loader-inner">
+            <div id="ritekhela-shadow"></div>
+            <div id="ritekhela-box"></div>
+        </div>
+    </div>
+
+    <div class="ritekhela-wrapper">
+
+
+
+
+        <!--// SubHeader //-->
+
+        <!--// Content //-->
+        <div class="ritekhela-main-content">
+
+            <!--// Main Section //-->
+            <div class="ritekhela-main-section ritekhela-fixture-list-full">
+                <div class="container">
+                    <div class="row">
+
+                        <!--// Full Section //-->
+                        <div class="col-md-8">
+
+
+                            <!--// Fixture Detail List //-->
+                            <figure class="ritekhela-fixture-detail">
+                                <img src="images/logo.png" alt="">
+
+                            </figure>
+
+                            <div class="ritekhela-editor-detail">
+                                <h2>STANDARD PLAYING CONTACT </h2>
+                                <p>This contract is made between<strong> <?php echo $mp['pname'] ;?></strong> and <strong><?php echo $club ;?></strong> dated ...... .<br>The contract is relevant for the following playing season(s)<strong> <?php echo $cfrom.' to '.$cto ;?></strong>.</p>
+                                <p>In accordance with the information provided therein this contract, the following details are set out as the
+                                    payment details from the club to the player as a return for services associated/provided with the club.
+                                    N.B.: The club reserves the right to impose a financial penalty on the player for any breaches of the contract conditions which shall not exceed 50% of the players Base Salary .
+                                    Complete as per agreement reached. <br>
+
+                                    <style>
+                                        #simple_table {
+                                            font-family: arial, sans-serif;
+                                            border-collapse: collapse;
+                                            width: 100%;
+                                        }
+
+                                        #simple_table td,
+                                        #simple_table th {
+                                            border: 1px solid #dddddd;
+                                            text-align: left;
+                                            padding: 8px;
+                                            border: 1px solid gray;
+                                        }
+
+                                        #simple_table tr:nth-child(even) {
+                                            background-color: #dddddd;
+                                        }
+
+                                        #simple_table tr>th {
+                                            border: 1px solid gray;
+                                            background: #1b90bb;
+                                            color: #FFF;
+                                        }
+                                    </style>
+                                <table id="simple_table">
+                                    <tr>
+                                        <th>Salary Type</th>
+                                        <th>Amount</th>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Base Salary</td>
+                                        <td>$<?php echo $bs ;?></td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>Per match played</td>
+                                        <td>$<?php echo $mpay ;?></td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>Reserve player on bench </td>
+                                        <td>$<?php echo $rpay ;?></td>
+
+                                    </tr>
+                                </table>
+
+                                <?php echo $other ;?>
+                                </p>
+
+                                <p>The player must comply with the following obligations:
+                                    The club and player acknowledge that this contract has been entered into in good faith. The contract shall
+                                    commence on <strong><?php echo $cfrom ;?> </strong> shall terminate on<strong> <?php echo $cto ;?> </strong>'s signature ........... For and on behalf of the club by its duly authorised officer <br>
+                                    <strong><?php echo $ce['name'] ;?></strong><br><img src="../signature/<?php echo $signature ;?>" style="height:100px;" /><br><strong><?php echo $ce['utype'] ;?></strong>
+
+                                </p>
+                                <p>
+                                <h4>PLAYER OBLIGATIONS </h4>
+                                For the term of the contract, this contract records and the following is agreed between the parties:
+                                PLAYER OBLIGATIONS
+                                1.1 Attend all training sessions and team meetings of the Club.
+                                1.2 Obey all reasonable directions of the Senior Coach, President, and Secretary of the Club.
+                                1.3 Play in all football matches in which he is selected to play or as otherwise directed by the Club unless a duly
+                                qualified Medical Practitioner rules him unfit to play.
+                                1.4 Comply with all reasonable requirements of the Club relating to preparation for matches, attendance at social
+                                functions, behaviour and dress.
+
+                                1.5 Not play or train for or with any other Club or team without first obtaining the consent in writing of the Club.
+                                1.6 Do everything reasonably necessary to obtain and maintain the best possible physical condition so as to render
+                                the most efficient service to the Club and to submit from time to time and as and when required by the Club to a
+                                complete a thorough medical fitness test and examination.
+                                1.7 Maintain membership of recognised hospital and medical benefits fund which provides hospital, medical and
+                                dental benefits coverage and includes ambulance subscription.
+                                1.8 Not engage in any dangerous activity which in the opinion of the Club may affect the Player's ability to perform
+                                his obligations under this Contract without first obtaining the consent in writing of the Club.
+                                1.9 During league matches, wear only such items of playing apparel as may be approved of or prescribed by the
+                                League and to the extent that the same are not inconsistent therewith, the Club.
+                                1.10 Not comment on a matter which the Club has notified the Player is a matter upon which Players of the Club are
+                                not to comment publicl <br><br>
+
+                                <h4>PLAYER BOUND TO RULES </h4>
+
+                                2.1 The Player hereby agrees with the Club that he is bound by:-
+                                (a) the Rules and Regulations of the Club;
+                                (b) the Rules and Regulations of the League within which the Club plays (including requirements of players
+                                and clubs regarding registration); and
+                                (c) the Rules and Regulations of .....................................................................................................................,
+                                including any modifications thereof made from time to time (“the Rules”).
+                                2.2 The Player hereby acknowledges that the Rules restrict the freedom of players to transfer from one Club
+                                to another but that such Rules are necessary and reasonable for the purpose of:-
+                                (a) achieving an even and well-matched competition;
+                                (b) ensuring the competition is properly organised and well administered; <br><br>
+
+
+                                <h4>DISPUTE</h4>
+                                3.1 In the event of a dispute arising between the parties during the term of this Contract or following the termination
+                                hereof, the matter may be referred for determination to the nominee of the league. A request for determination
+                                by an aggrieved party shall be made in writing to the other party and shall contain a precise statement of the
+                                issue in dispute and all relevant facts giving rise to the dispute. The League may adjudicate upon any dispute in
+                                accordance with its rules in force at the time.<br><br>
+
+                                <h4>TERMINATION</h4>
+
+                                This Contract may be terminated by:
+                                4.1 The Club if the Player is in breach of any of his obligations hereunder and the breach continues for a period of 14
+                                days after notice in writing by the Club to the Player requiring the breach to be remedied.
+                                4.2 The Player if the Club is in breach of any of its obligations hereunder and the breach continues for a period of 14
+                                days after notice in writing by the Player to the Club requiring the breach to be remedied.<br><br>
+
+                                <h4> PLAYER MOVEMENT/TRANSFER TO OTHER CLUBS or LEAGUES</h4>
+                                5.1 The player will remain contracted with the club that has signed him/her on until the expiration of the
+                                contract. It is noted and agreed to by all parties to this contract that the club reserves the right to loan,sell on transfer a player to another team or league so long as this contract is valid and in the event where a player is indebted to the club.
+                                5.2 Both Player and club reserve the rights to renew this contract in the event of it successfully expiring.
+
+                                5.3 Both Player and club are to adhere to all agency and or manager commitments and fees that predates the first contract and shall be held liable in any event or attempt not to pay. Which will attract a penalty of 50% the total value due.<br><br>
+
+                                <h4>WAIVER</h4>
+                                6.1 A waiver by any party of any of the terms and conditions of this Contract in any one case shall not be deemed or
+                                construed to be a waiver of such term or condition for the future or for any other or subsequent breach<br><br>
+
+
+
+                                <button  class="btn btn-primary pull-right pt"><span class="glyphicon glyphicon-export"></span> Export As PDF</button>
+
+
+                                </p>
+
                             </div>
-                            <div class="col-12 px-50 py-75">
-                              <h6 class="media-heading mb-0">Close</h6>
-                            </div>
-                          </div>
+
+
+
+
+
                         </div>
-                      </div>
+                        <!--// Full Section //-->
+
+                        <!--// SideBaar //-->
+
+                        <!--// SideBaar //-->
+
                     </div>
-                    <div class="d-flex justify-content-between cursor-pointer">
-                      <div class="media d-flex align-items-center">
-                        <div class="media-left pr-0">
-                          <div class="avatar bg-primary bg-lighten-5 mr-1 m-0 p-25"><span class="avatar-content text-primary font-medium-2">LD</span></div>
-                        </div>
-                        <div class="media-body">
-                          <h6 class="media-heading"><span class="text-bold-500">New customer</span> is registered</h6><small class="notification-text">1 hrs ago</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="cursor-pointer">
-                      <div class="media d-flex align-items-center justify-content-between">
-                        <div class="media-left pr-0">
-                          <div class="media-body">
-                            <h6 class="media-heading">New Offers</h6>
-                          </div>
-                        </div>
-                        <div class="media-right">
-                          <div class="custom-control custom-switch">
-                            <input class="custom-control-input" type="checkbox" checked id="notificationSwtich">
-                            <label class="custom-control-label" for="notificationSwtich"></label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="d-flex justify-content-between cursor-pointer">
-                      <div class="media d-flex align-items-center">
-                        <div class="media-left pr-0">
-                          <div class="avatar bg-danger bg-lighten-5 mr-1 m-0 p-25"><span class="avatar-content"><i class="bx bxs-heart text-danger"></i></span></div>
-                        </div>
-                        <div class="media-body">
-                          <h6 class="media-heading"><span class="text-bold-500">Application</span> has been approved</h6><small class="notification-text">6 hrs ago</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="d-flex justify-content-between read-notification cursor-pointer">
-                      <div class="media d-flex align-items-center">
-                        <div class="media-left pr-0">
-                          <div class="avatar mr-1 m-0"><img src="app-assets/images/portrait/small/avatar-s-4.jpg" alt="avatar" height="39" width="39"></div>
-                        </div>
-                        <div class="media-body">
-                          <h6 class="media-heading"><span class="text-bold-500">New file</span> has been uploaded</h6><small class="notification-text">4 hrs ago</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="d-flex justify-content-between cursor-pointer">
-                      <div class="media d-flex align-items-center">
-                        <div class="media-left pr-0">
-                          <div class="avatar bg-rgba-danger m-0 mr-1 p-25">
-                            <div class="avatar-content"><i class="bx bx-detail text-danger"></i></div>
-                          </div>
-                        </div>
-                        <div class="media-body">
-                          <h6 class="media-heading"><span class="text-bold-500">Finance report</span> has been generated</h6><small class="notification-text">25 hrs ago</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="d-flex justify-content-between cursor-pointer">
-                      <div class="media d-flex align-items-center border-0">
-                        <div class="media-left pr-0">
-                          <div class="avatar mr-1 m-0"><img src="app-assets/images/portrait/small/avatar-s-16.jpg" alt="avatar" height="39" width="39"></div>
-                        </div>
-                        <div class="media-body">
-                          <h6 class="media-heading"><span class="text-bold-500">New customer</span> comment recieved</h6><small class="notification-text">2 days ago</small>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="dropdown-menu-footer"><a class="dropdown-item p-50 text-primary justify-content-center" href="javascript:void(0)">Read all notifications</a></li>
-                </ul>
-              </li>
-              <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="page-users-view.html#" data-toggle="dropdown">
-                  <div class="user-nav d-sm-flex d-none"><span class="user-name">John Doe</span><span class="user-status text-muted">Available</span></div><span><img class="round" src="app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"></span></a>
-                <div class="dropdown-menu dropdown-menu-right pb-0"><a class="dropdown-item" href="page-user-profile.html"><i class="bx bx-user mr-50"></i> Edit Profile</a><a class="dropdown-item" href="app-email.html"><i class="bx bx-envelope mr-50"></i> My Inbox</a><a class="dropdown-item" href="app-todo.html"><i class="bx bx-check-square mr-50"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="bx bx-message mr-50"></i> Chats</a>
-                  <div class="dropdown-divider mb-0"></div><a class="dropdown-item" href="auth-login.html"><i class="bx bx-power-off mr-50"></i> Logout</a>
                 </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav> -->
-    <!-- END: Header-->
-
-
-    <!-- BEGIN: Main Menu-->
-    <?php include 'sidebar.php';?>
-    <!-- END: Main Menu-->
-
-    <!-- BEGIN: Content-->
-    <div class="app-content content">
-      <div class="content-overlay"></div>
-      <div class="content-wrapper">
-        <div class="content-header row">
-        </div>
-        <div class="content-body"><!-- users view start -->
-<section class="users-view">
-  <!-- users view media object start -->
-  
-  <!-- users view media object ends -->
-  <!-- users view card data start -->
- 
-  <!-- users view card data ends -->
-  <!-- users view card details start -->
-  <div class="card">
-    <div class="card-content">
-      <div class="card-body">
-       <?php
-
-            include 'db.php';
-
-
-            $id= $_GET['id'];
-            $mytatus = $_GET['status'];
-            $sl= mysqli_query($conn,"SELECT * FROM booking WHERE id= '$id' ");
-            $row = mysqli_fetch_array($sl);
-            extract($row);
-            
-       ?>
-        <div class="col-12">
-
-        <img src="../upload/<?php echo $pic;?>" style="width:100px;height:100px;"/>
-
-          <table class="table table-borderless">
-            <tbody>
-              
-              <tr>
-                <td>Name:</td>
-                <td class="users-view-name"><?php echo $fname.' '.$lname;?></td>
-              </tr>
-              <tr>
-                <td>E-mail:</td>
-                <td class="users-view-email"><?php echo $email;?></td>
-              </tr>
-              <tr>
-                <td>Package Type:</td>
-                <td><?php echo $type;?></td>
-              </tr>
-
-              <tr>
-                <td>Package Name:</td>
-                <td><?php echo $title;?></td>
-              </tr>
-
-              <tr>
-                <td>Package Price:</td>
-                <td><?php echo '$ '.$tt;?></td>
-              </tr>
-
-              <tr>
-                <td>Starts on:</td>
-                <td><?php echo $startdate;?></td>
-              </tr>
-              <tr>
-                <td>Ends on:</td>
-                <td><?php echo $enddate;?></td>
-              </tr>
-
-              <tr>
-                <td>Status:</td>
-                <td><?php echo $mytatus;?></td>
-              </tr>
-
-              <tr>
-                <td>Arrival Date:</td>
-                <td><?php echo $arrival;?></td>
-              </tr>
-
-              <tr>
-                <td>Depature Date:</td>
-                <td><?php echo $departure;?></td>
-              </tr>
-
-              <tr>
-                <td>Arrival Time:</td>
-                <td><?php echo $arrivaltime;?></td>
-              </tr>
-
-              <tr>
-                <td>Depature Time:</td>
-                <td><?php echo $departuretime;?></td>
-              </tr>
-
-
-            </tbody>
-          </table>
-          
-          <h5 class="mb-1"><i class="bx bx-info-circle"></i> Personal Info</h5>
-          <table class="table table-borderless mb-0">
-            <tbody>
-              
-              <tr>
-                <td>Country:</td>
-                <td><?php echo $country;?></td>
-              </tr>
-              <tr>
-                <td>City/State:</td>
-                <td><?php echo $state;?></td>
-              </tr>
-              <tr>
-                <td>Contact:</td>
-                <td><?php echo $contact;?></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- users view card details ends -->
-
-</section>
-<!-- users view ends -->
-        </div>
-      </div>
-    </div>
-    <!-- END: Content-->
-
-
-    <!-- BEGIN: Customizer-->
-    <div class="customizer d-none d-md-block"><a class="customizer-close" href="page-users-view.html#"><i class="bx bx-x"></i></a><a class="customizer-toggle" href="page-users-view.html#"><i class="bx bx-cog bx bx-spin white"></i></a><div class="customizer-content p-2">
-  <h4 class="text-uppercase mb-0">Theme Customizer</h4>
-  <small>Customize & Preview in Real Time</small>
-  <hr>
-  <!-- Theme options starts -->
-  <h5 class="mt-1">Theme Layout</h5>
-  <div class="theme-layouts">
-    <div class="d-flex justify-content-start">
-      <div class="mx-50">
-        <fieldset>
-          <div class="radio">
-            <input type="radio" name="layoutOptions" value="false" id="radio-light" class="layout-name" data-layout=""
-              checked>
-            <label for="radio-light">Light</label>
-          </div>
-        </fieldset>
-      </div>
-      <div class="mx-50">
-        <fieldset>
-          <div class="radio">
-            <input type="radio" name="layoutOptions" value="false" id="radio-dark" class="layout-name"
-              data-layout="dark-layout">
-            <label for="radio-dark">Dark</label>
-          </div>
-        </fieldset>
-      </div>
-      <div class="mx-50">
-        <fieldset>
-          <div class="radio">
-            <input type="radio" name="layoutOptions" value="false" id="radio-semi-dark" class="layout-name"
-              data-layout="semi-dark-layout">
-            <label for="radio-semi-dark">Semi Dark</label>
-          </div>
-        </fieldset>
-      </div>
-    </div>
-  </div>
-  <!-- Theme options starts -->
-  <hr>
-
-  <!-- Menu Colors Starts -->
-  <div id="customizer-theme-colors">
-    <h5>Menu Colors</h5>
-    <ul class="list-inline unstyled-list">
-      <li class="color-box bg-primary selected" data-color="theme-primary"></li>
-      <li class="color-box bg-success" data-color="theme-success"></li>
-      <li class="color-box bg-danger" data-color="theme-danger"></li>
-      <li class="color-box bg-info" data-color="theme-info"></li>
-      <li class="color-box bg-warning" data-color="theme-warning"></li>
-      <li class="color-box bg-dark" data-color="theme-dark"></li>
-    </ul>
-    <hr>
-  </div>
-  <!-- Menu Colors Ends -->
-  <!-- Menu Icon Animation Starts -->
-  <div id="menu-icon-animation">
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="icon-animation-title">
-        <h5 class="pt-25">Icon Animation</h5>
-      </div>
-      <div class="icon-animation-switch">
-        <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input" checked id="icon-animation-switch">
-          <label class="custom-control-label" for="icon-animation-switch"></label>
-        </div>
-      </div>
-    </div>
-    <hr>
-  </div>
-  <!-- Menu Icon Animation Ends -->
-  <!-- Collapse sidebar switch starts -->
-  <div class="collapse-sidebar d-flex justify-content-between align-items-center">
-    <div class="collapse-option-title">
-      <h5 class="pt-25">Collapse Menu</h5>
-    </div>
-    <div class="collapse-option-switch">
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="collapse-sidebar-switch">
-        <label class="custom-control-label" for="collapse-sidebar-switch"></label>
-      </div>
-    </div>
-  </div>
-  <!-- Collapse sidebar switch Ends -->
-  <hr>
-
-  <!-- Navbar colors starts -->
-  <div id="customizer-navbar-colors">
-    <h5>Navbar Colors</h5>
-    <ul class="list-inline unstyled-list">
-      <li class="color-box bg-white border selected" data-navbar-default=""></li>
-      <li class="color-box bg-primary" data-navbar-color="bg-primary"></li>
-      <li class="color-box bg-success" data-navbar-color="bg-success"></li>
-      <li class="color-box bg-danger" data-navbar-color="bg-danger"></li>
-      <li class="color-box bg-info" data-navbar-color="bg-info"></li>
-      <li class="color-box bg-warning" data-navbar-color="bg-warning"></li>
-      <li class="color-box bg-dark" data-navbar-color="bg-dark"></li>
-    </ul>
-    <small><strong>Note :</strong> This option with work only on sticky navbar when you scroll page.</small>
-    <hr>
-  </div>
-  <!-- Navbar colors starts -->
-  <!-- Navbar Type Starts -->
-  <h5>Navbar Type</h5>
-  <div class="navbar-type d-flex justify-content-start">
-    <div class="hidden-ele mx-50">
-      <fieldset>
-        <div class="radio">
-          <input type="radio" name="navbarType" value="false" id="navbar-hidden">
-          <label for="navbar-hidden">Hidden</label>
-        </div>
-      </fieldset>
-    </div>
-    <div class="mx-50">
-      <fieldset>
-        <div class="radio">
-          <input type="radio" name="navbarType" value="false" id="navbar-static">
-          <label for="navbar-static">Static</label>
-        </div>
-      </fieldset>
-    </div>
-    <div class="mx-50">
-      <fieldset>
-        <div class="radio">
-          <input type="radio" name="navbarType" value="false" id="navbar-sticky" checked>
-          <label for="navbar-sticky">Fixed</label>
-        </div>
-      </fieldset>
-    </div>
-  </div>
-  <hr>
-  <!-- Navbar Type Starts -->
-
-  <!-- Footer Type Starts -->
-  <h5>Footer Type</h5>
-  <div class="footer-type d-flex justify-content-start">
-    <div class="mx-50">
-      <fieldset>
-        <div class="radio">
-          <input type="radio" name="footerType" value="false" id="footer-hidden">
-          <label for="footer-hidden">Hidden</label>
-        </div>
-      </fieldset>
-    </div>
-    <div class="mx-50">
-      <fieldset>
-        <div class="radio">
-          <input type="radio" name="footerType" value="false" id="footer-static" checked>
-          <label for="footer-static">Static</label>
-        </div>
-      </fieldset>
-    </div>
-    <div class="mx-50">
-      <fieldset>
-        <div class="radio">
-          <input type="radio" name="footerType" value="false" id="footer-sticky">
-          <label for="footer-sticky" class="">Sticky</label>
-        </div>
-      </fieldset>
-    </div>
-  </div>
-  <!-- Footer Type Ends -->
-  <hr>
-
-  <!-- Card Shadow Starts-->
-  <div class="card-shadow d-flex justify-content-between align-items-center py-25">
-    <div class="hide-scroll-title">
-      <h5 class="pt-25">Card Shadow</h5>
-    </div>
-    <div class="card-shadow-switch">
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" checked id="card-shadow-switch">
-        <label class="custom-control-label" for="card-shadow-switch"></label>
-      </div>
-    </div>
-  </div>
-  <!-- Card Shadow Ends-->
-  <hr>
-
-  <!-- Hide Scroll To Top Starts-->
-  <div class="hide-scroll-to-top d-flex justify-content-between align-items-center py-25">
-    <div class="hide-scroll-title">
-      <h5 class="pt-25">Hide Scroll To Top</h5>
-    </div>
-    <div class="hide-scroll-top-switch">
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="hide-scroll-top-switch">
-        <label class="custom-control-label" for="hide-scroll-top-switch"></label>
-      </div>
-    </div>
-  </div>
-  <!-- Hide Scroll To Top Ends-->
-</div>
-    </div>
-    <!-- End: Customizer-->
-
-    <!-- Buynow Button-->
-    <!-- <div class="buy-now"><a href="https://1.envato.market/frest_admin" target="_blank" class="btn btn-danger">Buy Now</a>
-
-    </div> -->
-    <!-- demo chat-->
-    <div class="widget-chat-demo"><!-- widget chat demo footer button start -->
-<!-- <button class="btn btn-primary chat-demo-button glow px-1"><i class="livicon-evo"
-    data-options="name: comments.svg; style: lines; size: 24px; strokeColor: #fff; autoPlay: true; repeat: loop;"></i></button> -->
-<!-- widget chat demo footer button ends -->
-<!-- widget chat demo start -->
-<div class="widget-chat widget-chat-demo d-none">
-  <div class="card mb-0">
-    <div class="card-header border-bottom p-0">
-      <div class="media m-75">
-        <a href="JavaScript:void(0);">
-          <div class="avatar mr-75">
-            <img src="app-assets/images/portrait/small/avatar-s-2.jpg" alt="avtar images" width="32"
-              height="32">
-            <span class="avatar-status-online"></span>
-          </div>
-        </a>
-        <div class="media-body">
-          <h6 class="media-heading mb-0 pt-25"><a href="javaScript:void(0);">Kiara Cruiser</a></h6>
-          <span class="text-muted font-small-3">Active</span>
-        </div>
-        <i class="bx bx-x widget-chat-close float-right my-auto cursor-pointer"></i>
-      </div>
-    </div>
-    <div class="card-body widget-chat-container widget-chat-demo-scroll">
-      <div class="chat-content">
-        <div class="badge badge-pill badge-light-secondary my-1">today</div>
-        <div class="chat">
-          <div class="chat-body">
-            <div class="chat-message">
-              <p>How can we help? 😄</p>
-              <span class="chat-time">7:45 AM</span>
             </div>
-          </div>
+            <!--// Main Section //-->
+
         </div>
-        <div class="chat chat-left">
-          <div class="chat-body">
-            <div class="chat-message">
-              <p>Hey John, I am looking for the best admin template.</p>
-              <p>Could you please help me to find it out? 🤔</p>
-              <span class="chat-time">7:50 AM</span>
-            </div>
-          </div>
-        </div>
-        <div class="chat">
-          <div class="chat-body">
-            <div class="chat-message">
-              <p>Stack admin is the responsive bootstrap 4 admin template.</p>
-              <span class="chat-time">8:01 AM</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-footer border-top p-1">
-      <form class="d-flex" onsubmit="widgetChatMessageDemo();" action="javascript:void(0);">
-        <input type="text" class="form-control chat-message-demo mr-75" placeholder="Type here...">
-        <button type="submit" class="btn btn-primary glow px-1"><i class="bx bx-paper-plane"></i></button>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- widget chat demo ends -->
+        <!--// Content //-->
+
+
+        <!--// Footer //-->
 
     </div>
-    <div class="sidenav-overlay"></div>
-    <div class="drag-target"></div>
-
-    <!-- BEGIN: Footer-->
-    <?php ft();?>
-    <!-- END: Footer-->
 
 
-    <!-- BEGIN: Vendor JS-->
-    <script src="app-assets/vendors/js/vendors.min.js"></script>
-    <script src="app-assets/fonts/LivIconsEvo/js/LivIconsEvo.tools.min.js"></script>
-    <script src="app-assets/fonts/LivIconsEvo/js/LivIconsEvo.defaults.min.js"></script>
-    <script src="app-assets/fonts/LivIconsEvo/js/LivIconsEvo.min.js"></script>
-    <!-- BEGIN Vendor JS-->
+    <!--// Login ModalBox //-->
 
-    <!-- BEGIN: Page Vendor JS-->
-    <!-- END: Page Vendor JS-->
 
-    <!-- BEGIN: Theme JS-->
-    <script src="app-assets/js/core/app-menu.min.js"></script>
-    <script src="app-assets/js/core/app.min.js"></script>
-    <script src="app-assets/js/scripts/components.min.js"></script>
-    <script src="app-assets/js/scripts/footer.min.js"></script>
-    <script src="app-assets/js/scripts/customizer.min.js"></script>
-    <!-- END: Theme JS-->
+    <!--// Login ModalBox //-->
 
-    <!-- BEGIN: Page JS-->
-    <script src="app-assets/js/scripts/pages/page-users.min.js"></script>
-    <!-- END: Page JS-->
 
-  </body>
-  <!-- END: Body-->
+    <!--// Search ModalBox //-->
+
+
+
+    <!-- jQuery -->
+    <script src="../script/jquery.js"></script>
+    <script src="../script/popper.min.js"></script>
+    <script src="../script/bootstrap.min.js"></script>
+    <script src="../script/slick.slider.min.js"></script>
+    <script src="../script/fancybox.min.js"></script>
+    <script src="../script/isotope.min.js"></script>
+    <script src="../script/smartmenus.min.js"></script>
+    <script src="../script/progressbar.js"></script>
+    <script src="../script/jquery.countdown.min.js"></script>
+    <script src="../script/functions.js"></script>
+
+    <script>
+
+      $(function(){
+        $(".pt").click(function(){
+        $(this).hide();
+        window.print();
+    })
+      })
+    </script>
+</body>
+
+
+<!-- blog-detail42:02-->
+
 </html>

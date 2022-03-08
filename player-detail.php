@@ -245,14 +245,22 @@ session_start();
                                             <input type="hidden" name="playerid" value="<?php echo $pd;?>" id="mpi">
                                             <input type="hidden" name="cid" value="<?php echo $_SESSION['uid'];?>" id="mci">
                                             <?php
+                                                $check =mysqli_query($conn,"SELECT * FROM request  WHERE cid='".$_SESSION['uid']."' AND pid='$id' ");
+                                                $rck= mysqli_num_rows($check);
+                                                $rmit = mysqli_fetch_array($check);
 
                                                 if ($row['status'] == "Sold"){
                                                     echo '<p style="color:red;">This player is sold</p>';
                                                 }
+                                                elseif($rck >=1){
+
+                                                    echo ' <p id="mof">Already requested . Status: '.$rmit['status'].'</p> <a id="mof" href="medical-report.php?upid='.$id.'">View Medical Report </a>';
+
+                                                }
                                                 else{
 
                                             
-                                                    echo '<input type="submit" id="mof" value="Make Offer"> <input type="submit" id="mof" value="View Medical Report">';
+                                                    echo ' <input type="submit" id="mof" value="Make Offer"> <a id="mof" href="medical-report.php?upid='.$id.'">View Medical Report </a>';
 
                                                 }
                                             ?>

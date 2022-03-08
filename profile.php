@@ -169,11 +169,18 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                                             <!-- <a href="#" class="ritekhela-team-view3-btn">Read More <i class="fa fa-angle-right"></i></a> -->
                                         </div>
 
+
+
+                                        
+
                                         
                                     </li>
+
+                                    
                                     
                                 </ul>
-
+                                
+                               
                                 <!-- Codes for  Sending money begins -->
 
                                 <?php
@@ -257,10 +264,55 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
                             </div> -->
                             <!--// Pagination //-->
                         </div>
+                        
                         <!--// Full Section //-->
 
                         <!--// SideBaar //-->
-                        
+                        <aside class="col-md-4">
+                            
+                            <!--// Widget Popular News //-->
+                            <div class="widget widget_categories">
+                                <div class="ritekhela-fancy-title-two">
+                                    <h2>Your Offers</h2>
+                                </div>
+                                <ul>
+                                    <?php
+
+                                    $selr= mysqli_query($conn,"SELECT * FROM request WHERE cid='".$_SESSION['uid']."' ");
+
+                                    while ($rr=mysqli_fetch_array($selr)) {
+                                        $gep= mysqli_query($conn,"SELECT * FROM player WHERE id='".$rr['pid']."'");
+                                        $repo = mysqli_fetch_array($gep);
+
+                                        if($rr['status']=="Accepted"){
+                                            echo '<li><a href="mailtry.php?ucid='.$rr['cid'].'&upid='.$rr['pid'].'">'.$repo['pname'].'</a> <span style="background-color:green;">'.$rr['status'].'</span></li>';
+                                        }
+                                        else{
+                                            echo '<li><a href="mailtry.php?ucid='.$rr['cid'].'&upid='.$rr['pid'].'">'.$repo['pname'].'</a> <span style="background-color:orange;">'.$rr['status'].'</span></li>';
+
+                                        }
+                                        # code...
+                                    }
+
+                                    ?>
+                                   
+                                </ul>
+                            </div>
+                            <!--// Widget Popular News //-->
+
+                            <!--// Widget Social Media //-->
+                            
+                            <!--// Widget Social Media //-->
+
+                            <!--// Widget Newsletter //-->
+                            
+                            <!--// Widget Newsletter //-->
+                            
+                            <!--// Widget Gallery //-->
+                            
+                            <!--// Widget Gallery //-->
+
+                        </aside>
                         <!--// SideBaar //-->
 
                     </div>
@@ -288,9 +340,9 @@ Youtube : http://www.youtube.com/DollarsoftCorporation
     <?php searchbox();?>
 
     <!-- jQuery -->
-    <script src="script/jquery.js"></script>
-    <script src="script/popper.min.js"></script>
-    <script src="script/bootstrap.min.js"></script>
+        <script src="script/jquery.js"></script>
+        <script src="script/popper.min.js"></script>
+        <script src="script/bootstrap.min.js"></script>
     <script src="script/slick.slider.min.js"></script>
     <script src="script/fancybox.min.js"></script>
     <script src="script/isotope.min.js"></script>

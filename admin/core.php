@@ -99,7 +99,8 @@ function activities(){
         <td>'.$row['dateadded'].'</td>
         <td>'.$row['status'].'</td>
         <td><a  href ="edit-activity.php?id='.$row['id'].'" title="Edit"  class="btn btn-icon rounded-circle btn-outline-primary mr-1 mb-1"><i class="bx bx-pencil"></i></a>   <button id="'.$row['id'].'"  title="Delete" type="button" class="btn btn-icon btn-light-danger mr-1 mb-1 btndel">
-        <i class="bx bx-trash"></i></button></td>
+        <i class="bx bx-trash"></i></button>  <a id="'.$row['id'].'" href="medical-report.php?upid='.$row['id'].'"  title="View"  class="btn btn-icon btn-light-primary   mr-1 mb-1 ">
+        <i class="bx bx-show bx-tada-hover"></i>View Record</a></td>
     </tr>';
         # code...
     }
@@ -503,7 +504,11 @@ function Locations(){
         <td>'.$row['utype'].'</td>
         
         <td><img src="../upload/'.$row['pic'].'" style="width:150px;height:150px;" alt=""/></td>
-        <td>'.$row['dateadded'].'</td>
+        <td>'.$row['phone'].'</td>
+        <td>'.$row['address'].'</td>
+        
+        <td>'.$row['status'].'</td>
+        <td>'.$row['datejoined'].'</td>
         <td>  <button id="'.$row['id'].'"  title="Delete" type="button" class="btn btn-icon btn-light-danger mr-1 mb-1 btndelloc">
         <i class="bx bx-trash"></i></button></td>
     </tr>';
@@ -517,20 +522,27 @@ function Locations(){
 
 function Bookings(){
     include 'db.php';
-    $sel = mysqli_query($conn,"SELECT * FROM booking WHERE status ='pending' ");
+    $sel = mysqli_query($conn,"SELECT * FROM request ORDER BY id DESC ");
 
     while ($row=mysqli_fetch_array($sel)) {
+        $selc = mysqli_query($conn,"SELECT * FROM client WHERE id='".$row['cid'].".' ");
+        $rc= mysqli_fetch_array($selc);
+
+        $selp = mysqli_query($conn,"SELECT * FROM player WHERE id='".$row['pid'].".' ");
+        $rp= mysqli_fetch_array($selp);
+
         
 
         echo '<tr>
-        <td>'.$row['myref'].'</td>
-        <td>'.$row['fname'].' '.$row['lname'].'</td>
-        <td>'.$row['days'].'</td>
-        <td>'.$row['type'].'</td>
-        <td>'.$row['title'].'</td>
-        <td><img src="../upload/'.$row['pic'].'" style="width:150px;height:150px;" alt=""/></td>
+        <td>'.$rc['name'].'</td>
+        <td>'.$rp['pname'].'</td>
+        
+        <td><img src="../upload/'.$rc['pic'].'" style="width:150px;height:150px;" alt=""/></td>
+        <td><img src="../upload/'.$rp['pic'].'" style="width:150px;height:150px;" alt=""/></td>
+        <td>'.$row['club'].'</td>
         <td>'.$row['status'].'</td>
-        <td><a  href ="edit-booking.php?id='.$row['id'].'&days='.$row['days'].'" title="Start"  class="btn btn-icon rounded-circle btn-outline-success mr-1 mb-1"><i class="bx bx-check bx-spin-hover"></i>Start</a>  <a id="'.$row['id'].'" href="booking-detail.php?id='.$row['id'].'&status=pending"  title="View"  class="btn btn-icon btn-light-primary   mr-1 mb-1 ">
+        <td>'.$row['dateadded'].'</td>
+        <td><a  href ="edit-booking.php?id='.$row['id'].'&pid='.$rp['id'].'&cid='.$rc['id'].'" title="Start"  class="btn btn-icon rounded-circle btn-outline-success mr-1 mb-1">Accept</a>  <a id="'.$row['id'].'" href="booking-detail.php?ucid='.$rc['id'].'&upid='.$rp['id'].'"  title="View"  class="btn btn-icon btn-light-primary   mr-1 mb-1 ">
         <i class="bx bx-show bx-tada-hover"></i>View</a></td>
     </tr>';
         # code...

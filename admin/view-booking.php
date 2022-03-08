@@ -22,11 +22,11 @@ if (!isset($_SESSION['id']))
   <head>
   <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="keywords" content="Butter cups - Online Booking ">
-	<meta name="description" content="Buttercups - Online Booking">
+	<meta name="keywords" content="NSM - ">
+	<meta name="description" content="NSM">
     <meta name="author" content="favorchapel.com">
     
-    <title>Buttercup Tour - All Bookings </title>
+    <title>NSM</title>
     <link rel="apple-touch-icon" href="https://www.pixinvent.com/demo/frest-clean-bootstrap-admin-dashboard-template/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
@@ -1222,13 +1222,15 @@ if (!isset($_SESSION['id']))
                             <table class="table table-striped dataex-html5-selectors">
                                 <thead>
                                     <tr>
-                                        <th>Booking ID</th>
-                                        <th>Name</th>
-                                        <th>Days</th>
-                                        <th>Package Type</th>
-                                        <th>Package Name</th>
-                                        <th>Picture</th>
+                                       
+                                        <th> Client Name</th>
+                                        <th>Player Name</th>
+                                        <th>Client Pic</th>
+                                        <th>Player's Pic</th>
+                                        <th>Club Name</th>
                                         <th>Status</th>
+                                        <th>Date Added</th>
+                                       
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -1247,13 +1249,14 @@ if (!isset($_SESSION['id']))
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                        <th>Booking ID</th>
-                                        <th>Name</th>
-                                        <th>Days</th>
-                                        <th>Package Type</th>
-                                        <th>Package Name</th>
-                                        <th>Picture</th>
-                                        <th>status</th>
+                                <th> Client Name</th>
+                                        <th>Player Name</th>
+                                        <th>Client Pic</th>
+                                        <th>Player's Pic</th>
+                                        <th>Club Name</th>
+                                        <th>Status</th>
+                                        <th>Date Added</th>
+                                       
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>

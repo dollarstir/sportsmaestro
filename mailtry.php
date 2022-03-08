@@ -45,6 +45,24 @@
 // }
 ?>
 
+<?php 
+    include 'db.php';
+    $playerid = $_GET['upid'] ;
+    $cid= $_GET['ucid'];
+    $getdeal = mysqli_query($conn,"SELECT * FROM request WHERE pid= '$playerid' AND cid='$cid' ");
+    $row = mysqli_fetch_array($getdeal);
+    extract($row);
+
+    $see = mysqli_query($conn,"SELECT * FROM player WHERE id ='$playerid' ");
+    $mp =mysqli_fetch_array($see);
+
+    $cee = mysqli_query($conn,"SELECT * FROM client WHERE id ='$cid' ");
+    $ce =mysqli_fetch_array($cee);
+
+
+    
+?>
+
 
 <!doctype html>
 <html lang="zxx">
@@ -108,7 +126,7 @@
 
                             <div class="ritekhela-editor-detail">
                                 <h2>STANDARD PLAYING CONTACT </h2>
-                                <p>This contract is made between {Player name} and {club name} dated {the date} .<br>The contract is relevant for the following playing season(s) {from to date}.</p>
+                                <p>This contract is made between<strong> <?php echo $mp['pname'] ;?></strong> and <strong><?php echo $club ;?></strong> dated ...... .<br>The contract is relevant for the following playing season(s)<strong> <?php echo $cfrom.' to '.$cto ;?></strong>.</p>
                                 <p>In accordance with the information provided therein this contract, the following details are set out as the
                                     payment details from the club to the player as a return for services associated/provided with the club.
                                     N.B.: The club reserves the right to impose a financial penalty on the player for any breaches of the contract conditions which shall not exceed 50% of the players Base Salary .
@@ -147,30 +165,30 @@
                                     </tr>
                                     <tr>
                                         <td>Base Salary</td>
-                                        <td>$1000</td>
+                                        <td>$<?php echo $bs ;?></td>
 
                                     </tr>
 
                                     <tr>
                                         <td>Per match played</td>
-                                        <td>$200</td>
+                                        <td>$<?php echo $mpay ;?></td>
 
                                     </tr>
 
                                     <tr>
                                         <td>Reserve player on bench </td>
-                                        <td>$200</td>
+                                        <td>$<?php echo $rpay ;?></td>
 
                                     </tr>
                                 </table>
 
-
+                                <?php echo $other ;?>
                                 </p>
 
                                 <p>The player must comply with the following obligations:
                                     The club and player acknowledge that this contract has been entered into in good faith. The contract shall
-                                    commence on {cfrom} and shall terminate on {cto} Player's signature ......... For and on behalf of the club by its duly authorised officer
-                                    {cname}<br>{csig}<br>{cpos}
+                                    commence on <strong><?php echo $cfrom ;?> </strong> shall terminate on<strong> <?php echo $cto ;?> </strong>'s signature ........... For and on behalf of the club by its duly authorised officer <br>
+                                    <strong><?php echo $ce['name'] ;?></strong><br><img src="signature/<?php echo $signature ;?>" style="height:100px;" /><br><strong><?php echo $ce['utype'] ;?></strong>
 
                                 </p>
                                 <p>
@@ -239,7 +257,7 @@
 
 
 
-
+                                <button  class="btn btn-primary pull-right pt"><span class="glyphicon glyphicon-export"></span> Export As PDF</button>
 
 
                                 </p>
@@ -292,6 +310,7 @@
     <script src="script/progressbar.js"></script>
     <script src="script/jquery.countdown.min.js"></script>
     <script src="script/functions.js"></script>
+    <script src="ajax.js"></script>
 </body>
 
 
